@@ -6,44 +6,29 @@ window.onload = function() {
   core.fps = 15;
   core.onload = function() {
 
-    var bear = new Sprite(32, 32);
+/*  var bear = new Sprite(32, 32);
     bear.image = core.assets['chara1.png'];
     bear.x = 0;
     bear.y = 0;
 
     bear.addEventListener('enterframe', function() {
       if ( core.input.right ) this.x += 5;
-      // intersect
-      if ( this.intersect(enemy) ) {
-        //label.text = 'hit!';
-      }
-      // within
-      if ( this.within(enemy, 10) ) {
-        label.text = 'Hit!';
-        core.pushScene(gameOverScene);
-        core.stop();
-      }
-
     });
-
-    var enemy = new Sprite(32, 32);
-    enemy.image = core.assets['chara1.png'];
-    enemy.x = 80;
-    enemy.y = 0;
-    enemy.frame = 5;
-
-    var gameOverScene = new Scene();
-    gameOverScene.backgroundColor = 'black';
-
-    var label = new Label();
-    label.x = 280;
-    label.y = 5;
-    label.color = 'red';
-    label.font = '14px "Arial"';
-
-    core.rootScene.addChild(label);
     core.rootScene.addChild(bear);
-    core.rootScene.addChild(enemy);
+*/
+    var Bear = Class.create(Sprite, {
+      initialize: function(x, y) {
+        Sprite.call(this, 32, 32);
+        this.x = x;
+        this.y = y;
+        this.image = core.assets['chara1.png'];
+        this.on('enterframe', function() {
+          this.x += 5;
+        });
+        core.rootScene.addChild(this);
+      }
+    });
+    var bear = new Bear(0, 10);
   };
   core.start();
 };
