@@ -20,6 +20,8 @@ window.onload = function() {
       // within
       if ( this.within(enemy, 10) ) {
         label.text = 'Hit!';
+        core.pushScene(gameOverScene);
+        core.stop();
       }
 
     });
@@ -30,6 +32,8 @@ window.onload = function() {
     enemy.y = 0;
     enemy.frame = 5;
 
+    var gameOverScene = new Scene();
+    gameOverScene.backgroundColor = 'black';
 
     var label = new Label();
     label.x = 280;
